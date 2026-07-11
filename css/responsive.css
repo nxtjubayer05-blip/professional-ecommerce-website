@@ -1,0 +1,259 @@
+/* =====================================================
+   RESPONSIVE STYLESHEET
+   Mobile First Design
+   ===================================================== */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .website-name {
+        font-size: 18px;
+    }
+
+    .search-section {
+        order: 3;
+        width: 100%;
+        max-width: none;
+    }
+
+    .header-icons {
+        gap: 15px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+
+    .banner-slider {
+        height: 300px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .product-details-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .order-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .product-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+}
+
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .header {
+        padding: 10px 0;
+    }
+
+    .logo-section {
+        gap: 5px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .website-name {
+        font-size: 16px;
+    }
+
+    .search-section {
+        display: none;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .header-icons {
+        gap: 10px;
+        font-size: 18px;
+    }
+
+    .banner-slider {
+        height: 200px;
+    }
+
+    .slider-btn {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .product-card {
+        border-radius: 5px;
+    }
+
+    .product-image {
+        height: 150px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-name {
+        font-size: 14px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .product-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20% auto;
+    }
+
+    .auth-container {
+        padding: 20px;
+    }
+
+    .close {
+        right: 15px;
+        top: 15px;
+    }
+
+    .product-details-grid {
+        gap: 20px;
+    }
+
+    .product-header h1 {
+        font-size: 22px;
+    }
+
+    .product-price .price {
+        font-size: 28px;
+    }
+
+    .product-actions {
+        flex-direction: column;
+    }
+
+    .product-actions .btn {
+        padding: 12px;
+    }
+
+    .product-meta {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .order-form-wrapper,
+    .order-summary-wrapper {
+        padding: 20px;
+    }
+
+    .payment-container {
+        padding: 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .notification-dropdown,
+    .cart-dropdown,
+    .profile-dropdown {
+        min-width: 200px;
+        right: -50px;
+    }
+
+    .breadcrumb {
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Devices (320px and below) */
+@media (max-width: 320px) {
+    .website-name {
+        display: none;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .btn {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+}
+
+/* Landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .banner-slider {
+        height: 250px;
+    }
+
+    .products-grid {
+        gap: 10px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .footer,
+    .slider-btn,
+    .product-buttons,
+    .header-icons {
+        display: none;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
