@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইউজার ম্যানেজমেন্ট - অ্যাডমিন প্যানেল</title>
+    <link rel="stylesheet" href="../css/admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <i class="fas fa-tachometer-alt"></i>
+                <h2>অ্যাডমিন</h2>
+            </div>
+            <nav class="admin-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i> ড্যাশবোর্ড
+                </a>
+                <a href="products.html" class="nav-item">
+                    <i class="fas fa-box"></i> পণ্য ম্যানেজমেন্ট
+                </a>
+                <a href="banners.html" class="nav-item">
+                    <i class="fas fa-image"></i> ব্যানার ম্যানেজমেন্ট
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-shopping-bag"></i> অর্ডার ম্যানেজমেন্ট
+                </a>
+                <a href="users.html" class="nav-item active">
+                    <i class="fas fa-users"></i> ইউজার ম্যানেজমেন্ট
+                </a>
+                <a href="payments.html" class="nav-item">
+                    <i class="fas fa-credit-card"></i> পেমেন্ট সেটিংস
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <i class="fas fa-cog"></i> ওয়েবসাইট সেটিংস
+                </a>
+                <a href="#" class="nav-item" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> লগআউট
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>ইউজার ম্যানেজমেন্ট</h1>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>সমস্ত ইউজার</h2>
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="ইউজার খুঁজুন...">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ইউজার ID</th>
+                                    <th>নাম</th>
+                                    <th>ইমেল</th>
+                                    <th>ফোন</th>
+                                    <th>যোগ দিন</th>
+                                    <th>অবস্থা</th>
+                                    <th>কার্যকলাপ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersList">
+                                <tr><td colspan="7" style="text-align: center; padding: 20px;">লোডিং হচ্ছে...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('adminToken')) {
+            window.location.href = 'login.html';
+        }
+
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('adminToken');
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            document.querySelector('.admin-sidebar').classList.toggle('active');
+        });
+
+        async function loadUsers() {
+            try {
+                const response = await fetch('../backend/api/users.php');
+                const users = await response.json();
+
+                const list = document.getElementById('usersList');
+                if (!users || users.length === 0) {
+                    list.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 20px;">কোনো ইউজার নেই</td></tr>';
+                } else {
+                    list.innerHTML = users.map(user => `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone}</td>
+                            <td>${new Date(user.created_at).toLocaleDateString('bn-BD')}</td>
+                            <td><span class="badge badge-${user.status}">${user.status}</span></td>
+                            <td>
+                                <button class="btn-sm btn-edit" onclick="blockUser(${user.id})">ব্লক করুন</button>
+                                <button class="btn-sm btn-danger" onclick="deleteUser(${user.id})">সরাই</button>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
+            }
+        }
+
+        function blockUser(id) {
+            alert('ইউজার ব্লক করা হয়েছে');
+            loadUsers();
+        }
+
+        function deleteUser(id) {
+            if (confirm('আপনি কি নিশ্চিত? অবশ্যই হয়েছে।')) {
+                alert('ইউজার সরানো হয়েছে');
+                loadUsers();
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', () => {
+            // Search functionality
+        });
+
+        document.addEventListener('DOMContentLoaded', loadUsers);
+    </script>
+</body>
+</html>

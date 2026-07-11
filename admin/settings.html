@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ওয়েবসাইট সেটিংস - অ্যাডমিন প্যানেল</title>
+    <link rel="stylesheet" href="../css/admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <i class="fas fa-tachometer-alt"></i>
+                <h2>অ্যাডমিন</h2>
+            </div>
+            <nav class="admin-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-chart-line"></i> ড্যাশবোর্ড
+                </a>
+                <a href="products.html" class="nav-item">
+                    <i class="fas fa-box"></i> পণ্য ম্যানেজমেন্ট
+                </a>
+                <a href="banners.html" class="nav-item">
+                    <i class="fas fa-image"></i> ব্যানার ম্যানেজমেন্ট
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-shopping-bag"></i> অর্ডার ম্যানেজমেন্ট
+                </a>
+                <a href="users.html" class="nav-item">
+                    <i class="fas fa-users"></i> ইউজার ম্যানেজমেন্ট
+                </a>
+                <a href="payments.html" class="nav-item">
+                    <i class="fas fa-credit-card"></i> পেমেন্ট সেটিংস
+                </a>
+                <a href="settings.html" class="nav-item active">
+                    <i class="fas fa-cog"></i> ওয়েবসাইট সেটিংস
+                </a>
+                <a href="#" class="nav-item" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> লগআউট
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>ওয়েবসাইট সেটিংস</h1>
+                </div>
+            </div>
+
+            <div class="admin-content">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>সাধারণ সেটিংস</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="settingsForm">
+                            <div class="form-group">
+                                <label>ওয়েবসাইটের নাম</label>
+                                <input type="text" class="form-input" value="পেশাদার স্টোর" required>
+                            </div>
+                            <div class="form-group">
+                                <label>লোগো</label>
+                                <input type="file" class="form-input" accept="image/*">
+                            </div>
+                            <div class="form-group">
+                                <label>ফেভিকন</label>
+                                <input type="file" class="form-input" accept="image/*">
+                            </div>
+                            <div class="form-group">
+                                <label>প্রাথমিক রঙ</label>
+                                <input type="color" class="form-input" value="#ff6b35">
+                            </div>
+                            <div class="form-group">
+                                <label>সেকেন্ডারি রঙ</label>
+                                <input type="color" class="form-input" value="#1a1a1a">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="admin-card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h2>পাদটিকা সেটিংস</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="footerForm">
+                            <div class="form-group">
+                                <label>আমাদের সম্পর্কে</label>
+                                <textarea class="form-input" rows="4">সর্বোচ্চ মানের পণ্য এবং সেবা প্রদান করা আমাদের লক্ষ্য।</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>কপিরাইট টেক্সট</label>
+                                <input type="text" class="form-input" value="© 2024 পেশাদার স্টোর। সর্বস্বত্ব সংরক্ষিত।">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="admin-card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h2>সোশ্যাল মিডিয়া লিঙ্ক</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="socialForm">
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                <input type="url" class="form-input" placeholder="https://facebook.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp</label>
+                                <input type="url" class="form-input" placeholder="https://wa.me/...">
+                            </div>
+                            <div class="form-group">
+                                <label>Telegram</label>
+                                <input type="url" class="form-input" placeholder="https://t.me/...">
+                            </div>
+                            <div class="form-group">
+                                <label>Instagram</label>
+                                <input type="url" class="form-input" placeholder="https://instagram.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label>YouTube</label>
+                                <input type="url" class="form-input" placeholder="https://youtube.com/...">
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block" onclick="saveSettings()">সমস্ত সেটিংস সংরক্ষণ করুন</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('adminToken')) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('adminToken');
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            document.querySelector('.admin-sidebar').classList.toggle('active');
+        });
+
+        function saveSettings() {
+            alert('সেটিংস সংরক্ষণ করা হয়েছে');
+        }
+    </script>
+</body>
+</html>
